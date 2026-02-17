@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Estate | Hunian Eksklusif & Investasi Properti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS tambahan khusus untuk Maps agar rapi */
+        .location-section { padding: 80px 8%; background: white; }
+        .map-container { 
+            width: 100%; 
+            height: 450px; 
+            border-radius: 30px; 
+            overflow: hidden; 
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+        }
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+        }
+        /* Tambahan CSS Lead Form & Partner */
+        .partners { padding: 40px 8%; text-align: center; background: #f8fafc; }
+        .partner-logos { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; opacity: 0.6; filter: grayscale(1); }
+        .partner-logos i { font-size: 3rem; color: #64748b; transition: 0.3s; }
+        .partner-logos i:hover { color: #2563eb; filter: grayscale(0); opacity: 1; }
+        .lead-form-section { padding: 80px 8%; background: #0f172a; color: white; border-radius: 50px; margin: 40px 8%; }
+        
+        /* FOOTER RE-DESIGNED */
+        .footer-luxury { 
+            background: #020617; 
+            color: #94a3b8; 
+            padding: 100px 8% 40px; 
+            border-top: 1px solid #1e293b;
+        }
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr; 
+            gap: 60px; 
+        }
+        .footer-brand .logo { margin-bottom: 25px; }
+        .footer-brand p { line-height: 1.8; font-size: 0.95rem; }
+        .footer-links h4 { 
+            color: white; 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            margin-bottom: 30px; 
+            position: relative;
+        }
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 30px;
+            height: 2px;
+            background: #2563eb;
+        }
+        .footer-links ul { list-style: none; padding: 0; }
+        .footer-links ul li { margin-bottom: 15px; }
+        .footer-links ul li a { 
+            color: #94a3b8; 
+            text-decoration: none; 
+            transition: 0.3s; 
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+        .footer-links ul li a:hover { color: #2563eb; transform: translateX(5px); }
+        
+        .contact-list li { 
+            display: flex; 
+            gap: 15px; 
+            align-items: flex-start; 
+            margin-bottom: 20px !important; 
+        }
+        .contact-list i { color: #2563eb; margin-top: 5px; }
+        
+        .social-icons { display: flex; gap: 15px; margin-top: 25px; }
+        .social-icons a { 
+            width: 40px; 
+            height: 40px; 
+            background: #1e293b; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 50%; 
+            color: white; 
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .social-icons a:hover { background: #2563eb; transform: translateY(-5px); }
+        
+        .copyright-area {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        
+        @media (max-width: 768px) {
+            .location-grid { grid-template-columns: 1fr; }
+            .map-container { height: 300px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .lead-form-section { margin: 20px 4%; padding: 40px 6%; }
+            .copyright-area { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav data-aos="fade-down">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                <span>Luxury<span>Estate</span></span>
+            </div>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#" class="active">Beranda</a></li>
+                <li><a href="#katalog">Katalog</a></li>
+                <li><a href="#investasi">Investasi</a></li>
+                <li><a href="#tentang">Tentang Kami</a></li>
+                <li><a href="#lokasi">Lokasi</a></li>
+            </ul>
+
+            <div class="auth-group">
+                <a href="#" class="btn-login">Masuk</a>
+                <a href="https://wa.me/6288220007296?text=Halo%20Luxury%20Estate,%20saya%20ingin%20konsultasi%20properti" 
+                   target="_blank" class="btn-consult">
+                     Konsultasi <i class="fas fa-comments"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text" data-aos="fade-right" data-aos-delay="200">
+                <span class="badge">Eksklusif Listing 2026</span>
+                <h1>Temukan Hunian <br><span class="gradient-text">Masa Depan</span> Anda</h1>
+                <p>Kami tidak hanya menjual properti, kami mengkurasi gaya hidup premium dengan standar internasional untuk keluarga Anda.</p>
+                <div class="search-bar-luxury">
+                    <div class="input-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" placeholder="Cari lokasi, kota, atau area...">
+                    </div>
+                    <button class="btn-search">Cari Sekarang</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item"><h4>12k+</h4><p>Klien Puas</p></div>
+                    <div class="stat-item"><h4>500+</h4><p>Unit Mewah</p></div>
+                    <div class="stat-item"><h4>15+</h4><p>Penghargaan</p></div>
+                </div>
+            </div>
+            <div class="hero-visual" data-aos="zoom-in" data-aos-delay="400">
+                <div class="main-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" alt="Modern Mansion" class="floating">
+                    <div class="floating-card"><i class="fas fa-check-circle"></i><span>Terverifikasi Legal</span></div>
+                    <div class="floating-card price-tag"><i class="fas fa-tag"></i><span>Mulai Rp 2M</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners" data-aos="fade-up">
+        <p style="margin-bottom: 20px; font-weight: 600; color: #64748b;">PARTNER PERBANKAN & DEVELOPER KAMI</p>
+        <div class="partner-logos">
+            <i class="fab fa-apple-pay"></i>
+            <i class="fab fa-google-pay"></i>
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+        </div>
+    </section>
+
+    <section class="services" id="investasi">
+        <div class="section-header" data-aos="fade-up">
+            <span class="sub-title">Layanan Kami</span>
+            <h2>Solusi <span class="gradient-text">Properti</span> Terpadu</h2>
+            <p>Kami membantu Anda dari sekadar mencari hingga proses investasi jangka panjang.</p>
+        </div>
+        <div class="service-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-glass">
+                    <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+                    <h3>Investasi Properti</h3>
+                    <p>Analisis ROI mendalam untuk membantu Anda membangun portofolio masa depan yang stabil.</p>
+                    <a href="#" class="learn-more">Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="service-card featured" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-glass">
+                    <div class="icon-box"><i class="fas fa-shield-halved"></i></div>
+                    <h3>Luxury Concierge</h3>
+                    <p>Layanan VIP untuk membantu pengurusan dokumen hingga interior design impian Anda.</p>
+                    <a href="#" class="learn-more">Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-glass">
+                    <div class="icon-box"><i class="fas fa-vr-cardboard"></i></div>
+                    <h3>Virtual Tour 360</h3>
+                    <p>Lihat setiap sudut rumah tanpa harus keluar ruangan dengan teknologi VR terbaru kami.</p>
+                    <a href="#" class="learn-more">Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="catalog" id="katalog">
+        <div class="section-header" data-aos="fade-up">
+            <span class="sub-title">Koleksi Eksklusif</span>
+            <h2>Unit <span class="gradient-text">Pilihan</span> Terbaik</h2>
+            <p>Jelajahi portofolio properti premium kami di lokasi-lokasi paling strategis.</p>
+        </div>
+        <div class="property-grid" id="property-list"></div>
+    </section>
+
+    <section class="about-us" id="tentang">
+        <div class="about-container">
+            <div class="about-content" data-aos="fade-right">
+                <span class="sub-title">Tentang Luxury Estate</span>
+                <h2>Membangun Kepercayaan Sejak <span class="gradient-text">2010</span></h2>
+                <p>Kami hadir sebagai pionir dalam penyediaan hunian mewah yang menggabungkan estetika modern, keamanan maksimal, dan nilai investasi tinggi.</p>
+                <ul class="about-features">
+                    <li><i class="fas fa-check-circle"></i> Legalitas 100% Terjamin</li>
+                    <li><i class="fas fa-check-circle"></i> Lokasi Prime & Strategis</li>
+                    <li><i class="fas fa-check-circle"></i> Arsitektur Berstandar Dunia</li>
+                </ul>
+            </div>
+            <div class="testimonial-box" data-aos="fade-left">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="quote-text">"Menemukan hunian melalui Luxury Estate adalah pengalaman terbaik."</p>
+                <div class="user-info">
+                    <img src="https://ui-avatars.com/api/?name=Andras+Setya&background=2563eb&color=fff" alt="User Profile">
+                    <div><strong>Andras Setya Ramadhani</strong><span>CEO - Tech Creative</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location-section" id="lokasi" data-aos="fade-up">
+        <div class="section-header">
+            <span class="sub-title">Lokasi Kantor</span>
+            <h2>Kunjungi <span class="gradient-text">Showroom</span> Kami</h2>
+        </div>
+        <div class="location-grid">
+            <div class="location-info">
+                <div class="detail-item" style="margin-bottom: 20px;">
+                    <i class="fas fa-map-marked-alt" style="font-size: 24px; color: var(--primary);"></i>
+                    <div style="margin-top: 10px;">
+                        <strong>Alamat Utama</strong>
+                        <p>Sudirman Central Business District (SCBD), Lot 11A, Jakarta Selatan, Indonesia 12190</p>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-clock" style="font-size: 24px; color: var(--primary);"></i>
+                    <div style="margin-top: 10px;">
+                        <strong>Jam Operasional</strong>
+                        <p>Senin - Minggu: 09:00 - 18:00 WIB</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.274191374528!2d106.8062013!3d-6.2274641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1504928646b%3A0x8898950d26824905!2sSCBD!5e0!3m2!1sid!2sid!4v1700000000000" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="lead-form-section" data-aos="zoom-in">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <h2>Jadwalkan Private Viewing</h2>
+            <p>Tinggalkan kontak Anda, agen eksklusif kami akan menghubungi dalam 24 jam.</p>
+            <form style="display: grid; gap: 15px; margin-top: 30px;">
+                <input type="text" placeholder="Nama Lengkap" style="padding: 15px; border-radius: 10px; border: none; outline: none;">
+                <input type="email" placeholder="Email Aktif" style="padding: 15px; border-radius: 10px; border: none; outline: none;">
+                <button type="submit" style="padding: 15px; background: #2563eb; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s;">Kirim Permintaan</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="propertyModal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal-container">
+                <span class="close-modal"><i class="fas fa-times"></i> Tutup</span>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-gallery" id="modalGallery"></div>
+                
+                <div class="modal-info">
+                    <div class="modal-header-info">
+                        <h2 id="modalTitle">Nama Properti</h2>
+                        <p class="modal-price" id="modalPrice">Harga</p>
+                    </div>
+                    
+                    <div class="modal-specs">
+                        <span id="modalBeds"></span>
+                        <span id="modalBaths"></span>
+                        <span id="modalSqft"></span>
+                    </div>
+
+                    <div class="extra-details">
+                        <div class="detail-item">
+                            <i class="fas fa-file-contract"></i>
+                            <div><strong>Legalitas</strong><p>SHM (Sertifikat Hak Milik)</p></div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-bolt"></i>
+                            <div><strong>Listrik</strong><p>5500 Watt</p></div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <div><strong>Air</strong><p>PAM & Jetpump</p></div>
+                        </div>
+                    </div>
+
+                    <div class="modal-facilities">
+                        <h3>Fasilitas Utama</h3>
+                        <div class="facility-icons">
+                            <div class="facility-item"><i class="fas fa-swimming-pool"></i> <span>Kolam Renang</span></div>
+                            <div class="facility-item"><i class="fas fa-dumbbell"></i> <span>Gym Area</span></div>
+                            <div class="facility-item"><i class="fas fa-shield-alt"></i> <span>Security 24/7</span></div>
+                            <div class="facility-item"><i class="fas fa-parking"></i> <span>Parkir Luas</span></div>
+                            <div class="facility-item"><i class="fas fa-wifi"></i> <span>Smart Home</span></div>
+                        </div>
+                    </div>
+
+                    <div class="modal-description-section">
+                        <h3>Deskripsi Properti</h3>
+                        <p class="modal-desc" id="modalDesc">Deskripsi detail...</p>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <a href="#" id="whatsappLink" target="_blank" class="btn-consult-wa">
+                            Hubungi Agen Sekarang <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-luxury">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <span style="color: white;">Luxury<span>Estate</span></span>
+                </div>
+                <p>Kami berdedikasi untuk memberikan standar tertinggi dalam layanan properti premium, memastikan setiap klien mendapatkan hunian impian dengan nilai investasi terbaik di Indonesia.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Layanan</h4>
+                <ul>
+                    <li><a href="#katalog">Katalog Properti</a></li>
+                    <li><a href="#investasi">Konsultasi Investasi</a></li>
+                    <li><a href="#investasi">Virtual Tour 360</a></li>
+                    <li><a href="#investasi">Luxury Concierge</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Perusahaan</h4>
+                <ul>
+                    <li><a href="#tentang">Tentang Kami</a></li>
+                    <li><a href="#tentang">Karir</a></li>
+                    <li><a href="#tentang">Kebijakan Privasi</a></li>
+                    <li><a href="#tentang">Syarat & Ketentuan</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Kontak Kami</h4>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="tel:+6288220007296">+62 882-2000-7296</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@luxuryestate.id">info@luxuryestate.id</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>SCBD Lot 11A, Jakarta Selatan, Indonesia</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright-area">
+            <p>© 2026 Luxury Estate Global. Seluruh Hak Cipta Dilindungi.</p>
+            <p>Made with <i class="fas fa-heart" style="color: #ef4444;"></i> in Jakarta</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        document.querySelector('.close-modal').onclick = function() {
+            document.getElementById('propertyModal').style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    </script>
+</body>
+</html>
